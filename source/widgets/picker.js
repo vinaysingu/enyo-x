@@ -9,7 +9,7 @@ regexp:true, undef:true, trailing:true, white:true */
     @class A picker control that implements a dropdown list of items which can be selected.<br />
     Unlike the {@link XV.RelationWidget}, the collection is stored local to the widget.<br />
     The superkind of {@link XV.CharacteristicPicker}.<br />
-    Derived from <a href="http://enyojs.com/api/#enyo.Control">enyo.Control</a>. 
+    Derived from <a href="http://enyojs.com/api/#enyo.Control">enyo.Control</a>.
     @extends enyo.Control
    */
   enyo.kind(/** @lends XV.PickerWidget# */{
@@ -224,7 +224,7 @@ regexp:true, undef:true, trailing:true, white:true */
       @param value Can be a model or the id of a model (String or Number).
         If it is an ID, then the correct model will be fetched and this
         function will be called again recursively with the model.
-      @param {Object} options 
+      @param {Object} options
      */
     setValue: function (value, options) {
       options = options || {};
@@ -238,7 +238,8 @@ regexp:true, undef:true, trailing:true, white:true */
       // an id instead of a whole model.
       // note that we assume that all of the possible models are already
       // populated in the menu items of the picker
-      if (value && typeof value !== 'object') {
+      // note: value may be a '0' value
+      if ((value || value === 0) && typeof value !== 'object') {
         actualMenuItem = _.find(this.$.picker.controls, function (menuItem) {
           var ret = false;
           if (menuItem.value && menuItem.value.get) {
@@ -258,7 +259,7 @@ regexp:true, undef:true, trailing:true, white:true */
       }
 
       if (value !== oldValue) {
-        if (!this._selectValue(value)) { value = null; }
+        if (!this._selectValue(value) && this._selectValue(value) !== 0) { value = null; }
         if (value !== oldValue) {
           this.value = value;
           if (!options.silent) {
