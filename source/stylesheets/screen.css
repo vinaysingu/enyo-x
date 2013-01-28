@@ -340,7 +340,7 @@ body {
 }
 .xv-list .xv-list-item.item-selected .xv-list-attr.hyperlink {
   color: #f49200;
-  background: #226b9a url(../../assets/item-hilite.png) repeat-x bottom;
+  background: transparent;
 }
 .xv-list .xv-list-item.item-selected .xv-list-attr.header {
   background: #99ccff;
@@ -355,7 +355,16 @@ body {
 }
 .xv-list .xv-list-item.item-selected .xv-list-column .xv-list-attr.hyperlink {
   color: #f49200;
-  background: #226b9a url(../../assets/item-hilite.png) repeat-x bottom;
+  background: transparent;
+}
+.xv-list-item > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.xv-list-delete-button {
+  float: right;
+  display: none;
+  margin-top: -4px;
 }
 .xv-list-attr {
   padding: 5px;
@@ -517,6 +526,11 @@ body {
   padding: 8px 0 8px 8px;
   margin-right: 5px;
 }
+.xv-groupbox.editor {
+  min-width: 250px;
+  padding: 0;
+  margin: 0;
+}
 .xv-groupbox.in-panel {
   padding: 0;
   margin: 0;
@@ -551,6 +565,9 @@ body {
   -moz-border-radius: 0;
   border-radius: 0;
   margin: 0;
+}
+.xv-groupbox > .in-panel .editor-field {
+  border-right: none;
 }
 .xv-groupbox > *:first-child {
   border-top-color: #aaaaaa;
@@ -721,12 +738,22 @@ body {
   display: block;
   margin: 4px;
 }
+.xv-addresswidget-input-decorator.short {
+  width: 40%;
+}
 .xv-addresswidget-combobox-decorator {
   background: #ffffff;
   display: block;
   margin: 4px;
-  width: 70%;
+  width: 80%;
   padding-right: 0;
+}
+.xv-addresswidget-combobox-decorator .xv-combobox-input {
+  width: 80%;
+}
+.xv-addresswidget-combobox-decorator .xv-combobox {
+  padding: 0;
+  width: 100%;
 }
 .xv-addresswidget-input {
   width: 100%;
@@ -799,9 +826,12 @@ body {
 .xv-relations-editor-box.panel {
   width: 350px;
 }
-/* ProjectTaskListRelationsBox */
-.xv-project-tasks-box.panel {
+/* ListRelationsBox */
+.xv-list-relations-box.panel {
   width: 675px;
+}
+.xv-characteristic-relations-box.panel {
+  width: 500px;
 }
 /* Combo Box */
 .xv-combobox {
@@ -817,7 +847,7 @@ body {
   border: 0;
   display: inline-block;
   outline: none;
-  width: 150px;
+  width: 80%;
 }
 .xv-combobox-icon {
   margin-left: 4px;
@@ -851,6 +881,7 @@ body {
   width: 130px;
   padding: 18px 8px 8px 8px;
   text-align: right;
+  color: black;
 }
 .xv-textarea-input {
   width: 90%;
@@ -858,6 +889,7 @@ body {
   min-height: 100px;
   margin: 6px;
   border: #ddd 2px solid;
+  color: black;
 }
 .xv-documents-picker-label {
   width: 85px;
